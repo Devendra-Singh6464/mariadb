@@ -283,5 +283,8 @@ MariaDB [(none)]> show databases;
 
 MariaDB [(none)]> 
 ```
-
+* How to create table on the database
+```
+create table book (ID INT ,name varchar (20),email varchar(25));
+```
 
