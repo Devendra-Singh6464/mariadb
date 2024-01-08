@@ -264,7 +264,7 @@ Query OK, 0 rows affected (0.005 sec)
 MariaDB [(none)]> 
 ```
 
-again confirmation
+Again confirmation
 ```
 show databases;
 ```
@@ -283,8 +283,51 @@ MariaDB [(none)]> show databases;
 
 MariaDB [(none)]> 
 ```
+
 * How to create table on the database
 ```
 create table book (ID INT ,name varchar (20),email varchar(25));
 ```
+
+* How to insert data in the table
+  
+```
+insert into book (id,name,email) values(1,"Deepak","abc@gmail.com");
+```
+
+Output:
+```
+MariaDB [text]>  insert into book (id,name,email) values(1,"Deepak","abc@gmail.com");
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [text]> 
+```
+* How to show data in the book table  
+
+```
+select * from book;
+```
+output
+```
+MariaDB [text]> select * from book;
++------+--------+---------------+
+| ID   | name   | email         |
++------+--------+---------------+
+|    1 | Deepak | abc@gmail.com |
++------+--------+---------------+
+1 row in set (0.001 sec)
+
+MariaDB [text]> 
+```
+
+* How to exit mariadb sell
+```
+quit
+```
+and 
+
+```
+exit
+```
+
 
