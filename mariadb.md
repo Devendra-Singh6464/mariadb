@@ -202,6 +202,86 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 MariaDB [(none)]> 
 ```
+* How ro show database
+```
+show databases;
+```
+Output
+```
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.003 sec)
 
+MariaDB [(none)]> 
+```
+
+* How to create database
+```
+create database demo;
+```
+output
+```
+MariaDB [(none)]> create database demo
+    -> ;
+Query OK, 1 row affected (0.001 sec)
+```
+ again confermation your database in created  
+ show database
+```
+show database
+```
+output
+```
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| demo               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.001 sec)
+```
+how to drop database
+```
+drop database demo;
+```
+
+output
+```
+MariaDB [(none)]> drop database demo;
+Query OK, 0 rows affected (0.005 sec)
+
+MariaDB [(none)]> 
+```
+
+again confirmation
+```
+show databases;
+```
+Output
+```
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [(none)]> 
+```
 
 
