@@ -1,5 +1,8 @@
 # MariaDB --
 
+> 
+
+
 How to install mariadb in ubuntu
 * user the following command to install mariaDB
 ```
@@ -81,7 +84,8 @@ Processing triggers for man-db (2.10.2-1) ...
 Processing triggers for libc-bin (2.35-0ubuntu3.5) ...
 ```
 
-* Secure your MariaDB installation
+- Secure your MariaDB installation
+* Configure mysql.  
 ```
 sudo mysql_secure_installation
 ```
@@ -150,13 +154,29 @@ installation should now be secure.
 Thanks for using MariaDB!
 ```
 
-* Start and enable MariaDB
-Installation is complete, start the MariaDB service and enable it to start on boot:
+* Start and enable MariaDB service.
 
 ```
-sudo syatemctl status mariadb
+sudo syatemctl start mariadb
 ```
+```
+sudo systemctl enable mariadb
+```
+Output -
+```
+deepak@bhandari:~$ sudo systemctl enable mariadb
+[sudo] password for deepak: 
+Synchronizing state of mariadb.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable mariadb
+```
+
 Output
+* To check if MariaDB is active and not active:
+```
+sudo systemctl status mariadb
+```
+Output -
+
 ```
 ● mariadb.service - MariaDB 10.6.12 database server
      Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: en>
@@ -176,15 +196,15 @@ Jan 08 14:28:18 bhandari mariadbd[27654]: 2024-01-08 14:28:18 0 [Note] Server so
 Jan 08 14:28:18 bhandari mariadbd[27654]: 2024-01-08 14:28:18 0 [Note] /usr/sbin/mar>
 lines 1-16
 ```
+Please enable firewall -  
+The Database Firewall filter is used to block queries that match a set of rules. It can be used to prevent harmful queries from reaching the backend database instances or to limit access to the database based on a more flexible set of rules compared to the traditional GRANT-based privilege system. Currently the filter does not support multi-statements.
 
-or 
+- Apply the firewall rule.
 ```
-sudo systemctl enable mariadb
+firewall-cmd --permanent --add-service=mysql
 ```
-
-* To check if MariaDB is running properly, you can use the following command:
 ```
-sudo systemctl start mariadb
+firewall-cmd--reload
 ```
 * How to accessing the MariaDB shell
 ```
@@ -330,4 +350,13 @@ and
 exit
 ```
 
+The following statement types will allways be allowed through when action is set to allow:
 
+* COM_CHANGE_USER: The user is changed for an active connection
+* COM_FIELD_LIST: Aliss fro the `SHOW TABLES;` query
+* COM_INIT_DB: Alias for `USE <db>;`
+* COM_PING: Server is pinged
+* COM_PROCESS_INFO: Alias for `SHOW PROCESSLIST;`
+* COM_PROCESS_KILL: Alias for `KILL <id>;` query
+* COM_QUIT: Client closes connection
+* COM_SET_OPTION: Client multi-statements are being configured
