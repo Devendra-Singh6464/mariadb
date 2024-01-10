@@ -206,6 +206,17 @@ firewall-cmd --permanent --add-service=mysql
 ```
 firewall-cmd--reload
 ```
+
+* If you not set mariadb root password in the mariadb installation so run this command and set the root password 
+```
+SET PASSWORD FOR 'root'@'localhost` = PASSWORD('123')
+```
+Output - 
+```
+MariaDB [(none)]> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123');
+Query OK, 0 rows affected (0.027 sec)
+
+``` 
 * How to accessing the MariaDB shell
 ```
 sudo mariadb
@@ -214,6 +225,24 @@ Output
 ```
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 39
+Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1 Ubuntu 22.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+```
+And 
+```
+mysql -u root -i
+```
+ Output -
+ ```
+deepak@bhandari:~$ mysql -u root -p 
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 54
 Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1 Ubuntu 22.04
 
 Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
