@@ -350,6 +350,24 @@ and
 exit
 ```
 
+* How to create User:
+```
+create user Student@localhost identified by 'book';
+```
+Output -
+
+```
+MariaDB [(none)]> create user Student@localhost identified by 'book';
+Query OK, 0 rows affected (0.020 sec)
+
+MariaDB [(none)]>
+```
+* How to going inside the my database table -
+```
+user text;
+```
+  
+
 The following statement types will allways be allowed through when action is set to allow:
 
 * COM_CHANGE_USER: The user is changed for an active connection
