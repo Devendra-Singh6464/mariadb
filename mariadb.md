@@ -296,7 +296,7 @@ MariaDB [(none)]> SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123');
 Query OK, 0 rows affected (0.027 sec)
 
 ``` 
-* How to accessing the MariaDB shell
+* How to accessing the MariaDB shell 
 ```
 sudo mariadb
 ```
@@ -312,12 +312,12 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 MariaDB [(none)]> 
 ```
-And 
+and 
 ```
 mysql -u root -i
 ```
- Output -
- ```
+Output -
+```
 deepak@bhandari:~$ mysql -u root -p 
 Enter password: 
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -330,7 +330,8 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 MariaDB [(none)]> 
 ```
-* How ro show database
+#### DataBase Querys--
+* How to show default databases. 
 ```
 show databases;
 ```
@@ -351,19 +352,19 @@ MariaDB [(none)]>
 ```
 
 * How to create database
+  * Synatx create database <database_name>
 ```
 create database demo;
 ```
 output
 ```
-MariaDB [(none)]> create database demo
-    -> ;
+MariaDB [(none)]> create database demo;
 Query OK, 1 row affected (0.001 sec)
 ```
- again confermation your database in created  
- show database
+Confermation your database in created  
+* show database
 ```
-show database
+show database;
 ```
 output
 ```
@@ -379,12 +380,13 @@ MariaDB [(none)]> show databases;
 +--------------------+
 5 rows in set (0.001 sec)
 ```
-how to drop database
+
+* How to drop database
+* Synatx `drop database <database_name>;`
 ```
 drop database demo;
 ```
-
-output
+* output
 ```
 MariaDB [(none)]> drop database demo;
 Query OK, 0 rows affected (0.005 sec)
@@ -392,7 +394,7 @@ Query OK, 0 rows affected (0.005 sec)
 MariaDB [(none)]> 
 ```
 
-Again confirmation
+Again confirmation your database drop or not.
 ```
 show databases;
 ```
@@ -409,21 +411,26 @@ MariaDB [(none)]> show databases;
 +--------------------+
 4 rows in set (0.001 sec)
 
-MariaDB [(none)]> 
+MariaDB [(none)]>
+```
+
+* How to going inside the my database table -
+```
+user text;
 ```
 
 * How to create table on the database
+* Syntax - `create table <table_name>(what do you want in the table);  
 ```
 create table book (ID INT ,name varchar (20),email varchar(25));
 ```
 
 * How to insert data in the table
-  
 ```
 insert into book (id,name,email) values(1,"Deepak","abc@gmail.com");
 ```
 
-Output:
+* Output:
 ```
 MariaDB [text]>  insert into book (id,name,email) values(1,"Deepak","abc@gmail.com");
 Query OK, 1 row affected (0.002 sec)
@@ -470,11 +477,6 @@ Query OK, 0 rows affected (0.020 sec)
 
 MariaDB [(none)]>
 ```
-* How to going inside the my database table -
-```
-user text;
-```
-  
 
 The following statement types will allways be allowed through when action is set to allow:
 
