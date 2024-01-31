@@ -73,15 +73,6 @@ W: https://repo.mongodb.org/apt/ubuntu/dists/jammy/mongodb-org/4.4/Release.gpg: 
 W: https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/5.0/Release.gpg: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
 ```
 
-## Command -
-```
-sudo apt-get upgrade
-```
-## output-
-```
-
-```
-
 > 
 How to install mariadb in ubuntu
 * user the following command to install mariaDB
