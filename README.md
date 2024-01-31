@@ -331,6 +331,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 MariaDB [(none)]> 
 ```
 #### DataBase Querys--
+
 * How to show default databases. 
 ```
 show databases;
@@ -354,12 +355,12 @@ MariaDB [(none)]>
 * How to create database
   * Synatx create database <database_name>
 ```
-create database demo;
+CREATE DATABASE `birthdays`;
 ```
 output
 ```
-MariaDB [(none)]> create database demo;
-Query OK, 1 row affected (0.001 sec)
+MariaDB [(none)]> CREATE DATABASE `birthdays`;
+Query OK, 1 row affected (0.000 sec)
 ```
 Confermation your database in created  
 * show database
@@ -372,26 +373,22 @@ MariaDB [(none)]> show databases;
 +--------------------+
 | Database           |
 +--------------------+
-| demo               |
+| birthdays          |
 | information_schema |
+| inventory          |
 | mysql              |
 | performance_schema |
 | sys                |
 +--------------------+
-5 rows in set (0.001 sec)
+6 rows in set (0.001 sec)
 ```
 
 * How to drop database
 * Synatx `drop database <database_name>;`
 ```
-drop database demo;
 ```
 * output
 ```
-MariaDB [(none)]> drop database demo;
-Query OK, 0 rows affected (0.005 sec)
-
-MariaDB [(none)]> 
 ```
 
 Again confirmation your database drop or not.
@@ -415,44 +412,174 @@ MariaDB [(none)]>
 ```
 
 * How to going inside the my database table -
+* Syntax - USE <database_name>;
 ```
-user text;
+USE birthdays;
 ```
 
 * How to create table on the database
-* Syntax - `create table <table_name>(what do you want in the table);  
+* Syntax - create table <table_name>(what do you want in the table);  
 ```
-create table book (ID INT ,name varchar (20),email varchar(25));
+CREATE TABLE tourneys(name varchar(40),wins real,best real,size real);
+```
+* Output:
+```
+MariaDB [birthdays]> CREATE TABLE tourneys(name varchar(40),wins real,best real,size real);
+Query OK, 0 rows affected (0.006 sec)
 ```
 
 * How to insert data in the table
 ```
-insert into book (id,name,email) values(1,"Deepak","abc@gmail.com");
+ INSERT INTO tourneys (name, wins, best, size) 
+    -> VALUES ('Dolly', '7', '245', '8.5'), 
+    -> ('Etta', '4', '283', '9'), 
+    -> ('Irma', '9', '266', '7'), 
+    -> ('Barbara', '2', '197', '7.5'), 
+    -> ('Gladys', '13', '273', '8');
 ```
 
 * Output:
 ```
-MariaDB [text]>  insert into book (id,name,email) values(1,"Deepak","abc@gmail.com");
-Query OK, 1 row affected (0.002 sec)
-
-MariaDB [text]> 
+MariaDB [birthdays]> INSERT INTO tourneys (name, wins, best, size) 
+    -> VALUES ('Dolly', '7', '245', '8.5'), 
+    -> ('Etta', '4', '283', '9'), 
+    -> ('Irma', '9', '266', '7'), 
+    -> ('Barbara', '2', '197', '7.5'), 
+    -> ('Gladys', '13', '273', '8');
+Query OK, 5 rows affected (0.002 sec)
+Records: 5  Duplicates: 0  Warnings: 0
 ```
-* How to show data in the book table  
+* and create another table in the same database-
+* Command-
+```
+CREATE TABLE dinners ( 
+    -> name varchar(30), 
+    -> birthdate date, 
+    -> entree varchar(30), 
+    -> side varchar(30), 
+    -> dessert varchar(30) 
+    -> );
+```
+*Output
+```
+MariaDB [birthdays]> CREATE TABLE dinners ( 
+    -> name varchar(30), 
+    -> birthdate date, 
+    -> entree varchar(30), 
+    -> side varchar(30), 
+    -> dessert varchar(30) 
+    -> );
+Query OK, 0 rows affected (0.005 sec)
+```
+* Populate this table with some sample data as well:
+* Command -
+```
+INSERT INTO dinners (name, birthdate, entree, side, dessert) 
+    -> VALUES ('Dolly', '1946-01-19', 'steak', 'salad', 'cake'), 
+    -> ('Etta', '1938-01-25', 'chicken', 'fries', 'ice cream'), 
+    -> ('Irma', '1941-02-18', 'tofu', 'fries', 'cake'), 
+    -> ('Barbara', '1948-12-25', 'tofu', 'salad', 'ice cream'), 
+    -> ('Gladys', '1944-05-28', 'steak', 'fries', 'ice cream');
+```
+* Output -
+```
+MariaDB [birthdays]> INSERT INTO dinners (name, birthdate, entree, side, dessert) 
+    -> VALUES ('Dolly', '1946-01-19', 'steak', 'salad', 'cake'), 
+    -> ('Etta', '1938-01-25', 'chicken', 'fries', 'ice cream'), 
+    -> ('Irma', '1941-02-18', 'tofu', 'fries', 'cake'), 
+    -> ('Barbara', '1948-12-25', 'tofu', 'salad', 'ice cream'), 
+    -> ('Gladys', '1944-05-28', 'steak', 'fries', 'ice cream');
+Query OK, 5 rows affected (0.002 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+```
+
+* The following statement will return the entire name column from the dinners table:
+* Command-
+```
+SELECT name FROM dinners;
+```
+* OutPut-
+```
+MariaDB [birthdays]> SELECT name FROM dinners;
++---------+
+| name    |
++---------+
+| Dolly   |
+| Etta    |
+| Irma    |
+| Barbara |
+| Gladys  |
++---------+
+5 rows in set (0.001 sec)
+```
+* You can select multiple columns from the same table by separating their names with a comma, like this:
+* Command-
+```
+SELECT name, birthdate FROM dinners;
+```
+* Output-
+```
+MariaDB [birthdays]> SELECT name, birthdate FROM dinners;
++---------+------------+
+| name    | birthdate  |
++---------+------------+
+| Dolly   | 1946-01-19 |
+| Etta    | 1938-01-25 |
+| Irma    | 1941-02-18 |
+| Barbara | 1948-12-25 |
+| Gladys  | 1944-05-28 |
++---------+------------+
+5 rows in set (0.000 sec)
+```
+* The following command returns every column from the tourneys table:
+* Command -
+```
+SELECT * FROM tourneys;
+```
+* Output-
+```
+MariaDB [birthdays]> SELECT * FROM tourneys;
++---------+------+------+------+
+| name    | wins | best | size |
++---------+------+------+------+
+| Dolly   |    7 |  245 |  8.5 |
+| Etta    |    4 |  283 |    9 |
+| Irma    |    9 |  266 |    7 |
+| Barbara |    2 |  197 |  7.5 |
+| Gladys  |   13 |  273 |    8 |
++---------+------+------+------+
+5 rows in set (0.000 sec)
+```
+
+* There may be times when you’re working with databases that have columns or tables with relatively long or difficult-to-read names. In these cases, you can make these names more readable by creating an alias with the AS keyword. Aliases created with AS are temporary, and only exist for the duration of the query for which they’re created:
+* Command -
+```
+SELECT name AS n, birthdate AS b, dessert AS d FROM dinners;
+```
+
+* Output-
+```
+MariaDB [birthdays]> SELECT name AS n, birthdate AS b, dessert AS d FROM dinners;
++---------+------------+-----------+
+| n       | b          | d         |
++---------+------------+-----------+
+| Dolly   | 1946-01-19 | cake      |
+| Etta    | 1938-01-25 | ice cream |
+| Irma    | 1941-02-18 | cake      |
+| Barbara | 1948-12-25 | ice cream |
+| Gladys  | 1944-05-28 | ice cream |
++---------+------------+-----------+
+5 rows in set (0.000 sec)
+```
+
+* How to show data in the table  
 
 ```
-select * from book;
+
 ```
 output
 ```
-MariaDB [text]> select * from book;
-+------+--------+---------------+
-| ID   | name   | email         |
-+------+--------+---------------+
-|    1 | Deepak | abc@gmail.com |
-+------+--------+---------------+
-1 row in set (0.001 sec)
-
-MariaDB [text]> 
+ 
 ```
 
 * How to exit mariadb sell
@@ -472,19 +599,12 @@ create user Student@localhost identified by 'book';
 Output -
 
 ```
-MariaDB [(none)]> create user Student@localhost identified by 'book';
-Query OK, 0 rows affected (0.020 sec)
 
-MariaDB [(none)]>
 ```
 
-The following statement types will allways be allowed through when action is set to allow:
 
-* COM_CHANGE_USER: The user is changed for an active connection
-* COM_FIELD_LIST: Aliss fro the `SHOW TABLES;` query
-* COM_INIT_DB: Alias for `USE <db>;`
-* COM_PING: Server is pinged
-* COM_PROCESS_INFO: Alias for `SHOW PROCESSLIST;`
-* COM_PROCESS_KILL: Alias for `KILL <id>;` query
-* COM_QUIT: Client closes connection
-* COM_SET_OPTION: Client multi-statements are being configured
+
+
+
+#### How To Import and Export Databases in MySQL or MariaDB-
+
