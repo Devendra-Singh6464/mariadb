@@ -1,8 +1,8 @@
 # MariaDB --
 
+Mariadb is a relational database management system that stores information in a structured way. It organizes data into tables, where each table consists of rows and columns.
+
 > 
-
-
 How to install mariadb in ubuntu
 * user the following command to install mariaDB
 ```
