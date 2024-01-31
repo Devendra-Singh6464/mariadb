@@ -2,6 +2,86 @@
 
 Mariadb is a relational database management system that stores information in a structured way. It organizes data into tables, where each table consists of rows and columns.
 
+## Prerequisite
+
+Distributor ID:	Ubuntu  
+Description:	Ubuntu 22.04.3 LTS  
+Release:	22.04  
+Codename:	jammy  
+
+### Command-
+```
+sudo apt-get update
+```
+### Output-
+```
+deepak@bhandari:~$ sudo apt-get update
+[sudo] password for deepak: 
+Hit:1 https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/jammy pgadmin4 InRelease
+Hit:2 https://apt.postgresql.org/pub/repos/apt jammy-pgdg InRelease            
+Get:3 http://ppa.launchpad.net/tektoncd/cli/ubuntu eoan InRelease [15.9 kB]    
+Err:3 http://ppa.launchpad.net/tektoncd/cli/ubuntu eoan InRelease              
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 3EFE0E0A2F2F60AA
+Get:4 https://download.docker.com/linux/ubuntu jammy InRelease [48.8 kB]       
+Get:5 http://packages.microsoft.com/repos/code stable InRelease [3,589 B]      
+Get:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages [25.1 kB]
+Get:7 https://dl.google.com/linux/chrome/deb stable InRelease [1,825 B]        
+Get:8 http://packages.microsoft.com/repos/code stable/main amd64 Packages [16.1 kB]
+Ign:9 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/4.4 InRelease      
+Get:10 http://packages.microsoft.com/repos/code stable/main arm64 Packages [16.2 kB]
+Get:11 http://packages.microsoft.com/repos/code stable/main armhf Packages [16.3 kB]
+Ign:12 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 InRelease     
+Get:13 https://dl.google.com/linux/chrome/deb stable/main amd64 Packages [1,078 B]
+Hit:14 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy InRelease  
+Get:15 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]     
+Hit:16 http://in.archive.ubuntu.com/ubuntu jammy InRelease                     
+Get:17 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/4.4 Release [3,094 B]
+Get:18 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 Release [3,094 B]
+Get:19 http://in.archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]    
+Get:20 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/4.4 Release.gpg [866 B]
+Get:21 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 Release.gpg [866 B]
+Get:22 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/4.4/multiverse amd64 Packages [25.3 kB]
+Get:23 https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/4.4/multiverse arm64 Packages [22.3 kB]
+Get:24 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0/multiverse amd64 Packages [66.0 kB]
+Get:25 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1,109 kB]
+Get:26 https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0/multiverse arm64 Packages [59.8 kB]
+Hit:27 http://in.archive.ubuntu.com/ubuntu jammy-backports InRelease           
+Get:28 http://in.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1,325 kB]
+Get:29 http://security.ubuntu.com/ubuntu jammy-security/main i386 Packages [393 kB]
+Get:30 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [207 kB]
+Get:31 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [1,313 kB]
+Get:32 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [214 kB]
+Get:33 http://in.archive.ubuntu.com/ubuntu jammy-updates/main i386 Packages [560 kB]
+Get:34 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [835 kB]
+Get:35 http://in.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [267 kB]
+Get:36 http://security.ubuntu.com/ubuntu jammy-security/universe i386 Packages [587 kB]
+Get:37 http://in.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [1,342 kB]
+Get:38 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [159 kB]
+Get:39 http://in.archive.ubuntu.com/ubuntu jammy-updates/restricted i386 Packages [34.8 kB]
+Get:40 http://in.archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [220 kB]
+Get:41 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe i386 Packages [685 kB]
+Get:42 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1,038 kB]
+Get:43 http://in.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [233 kB]
+Get:44 http://in.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [42.1 kB]
+Reading package lists... Done                                                  
+N: Skipping acquire of configured file 'main/binary-i386/Packages' as repository 'https://apt.postgresql.org/pub/repos/apt jammy-pgdg InRelease' doesn't support architecture 'i386'
+W: GPG error: http://ppa.launchpad.net/tektoncd/cli/ubuntu eoan InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 3EFE0E0A2F2F60AA
+E: The repository 'http://ppa.launchpad.net/tektoncd/cli/ubuntu eoan InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+W: https://repo.mongodb.org/apt/ubuntu/dists/jammy/mongodb-org/4.4/Release.gpg: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+W: https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/5.0/Release.gpg: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+```
+
+## Command -
+```
+sudo apt-get upgrade
+```
+## output-
+```
+
+```
+
 > 
 How to install mariadb in ubuntu
 * user the following command to install mariaDB
