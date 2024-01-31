@@ -9,7 +9,13 @@ Description:	Ubuntu 22.04.3 LTS
 Release:	22.04  
 Codename:	jammy  
 
-### Command-
+#### mariadb version-
+```
+mariadb  Ver 15.1 Distrib 10.6.16-MariaDB, for debian-linux-gnu (x86_64) using  EditLine wrapper
+```
+
+### Update your package index using 
+* Command-
 ```
 sudo apt-get update
 ```
@@ -73,8 +79,8 @@ W: https://repo.mongodb.org/apt/ubuntu/dists/jammy/mongodb-org/4.4/Release.gpg: 
 W: https://repo.mongodb.org/apt/ubuntu/dists/focal/mongodb-org/5.0/Release.gpg: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
 ```
 
-> 
-How to install mariadb in ubuntu
+>
+### Install the `mariadb-server` package 
 * user the following command to install mariaDB
 ```
 sudo apt install mariadb-server
@@ -155,14 +161,13 @@ Processing triggers for man-db (2.10.2-1) ...
 Processing triggers for libc-bin (2.35-0ubuntu3.5) ...
 ```
 
-- Secure your MariaDB installation
+### Run the included `mysql_secure_installation` security script to restrict access to the server.
 * Configure mysql.  
 ```
 sudo mysql_secure_installation
 ```
 Output
 ```
-
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
       SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
 
@@ -198,14 +203,14 @@ Remove anonymous users? [Y/n] n
 Normally, root should only be allowed to connect from 'localhost'.  This
 ensures that someone cannot guess at the root password from the network.
 
-Disallow root login remotely? [Y/n] 
+Disallow root login remotely? [Y/n] y
  ... Success!
 
 By default, MariaDB comes with a database named 'test' that anyone can
 access.  This is also intended only for testing, and should be removed
 before moving into a production environment.
 
-Remove test database and access to it? [Y/n] 
+Remove test database and access to it? [Y/n] y
  - Dropping test database...
  ... Success!
  - Removing privileges on test database...
@@ -214,7 +219,7 @@ Remove test database and access to it? [Y/n]
 Reloading the privilege tables will ensure that all changes made so far
 will take effect immediately.
 
-Reload privilege tables now? [Y/n] 
+Reload privilege tables now? [Y/n] y
  ... Success!
 
 Cleaning up...
@@ -242,12 +247,11 @@ Executing: /lib/systemd/systemd-sysv-install enable mariadb
 ```
 
 Output
-* To check if MariaDB is active and not active:
+* When installed from the default repositories, MariaDB will start running automatically. To test this, check its status.
 ```
 sudo systemctl status mariadb
 ```
 Output -
-
 ```
 ● mariadb.service - MariaDB 10.6.12 database server
      Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: en>
@@ -267,6 +271,10 @@ Jan 08 14:28:18 bhandari mariadbd[27654]: 2024-01-08 14:28:18 0 [Note] Server so
 Jan 08 14:28:18 bhandari mariadbd[27654]: 2024-01-08 14:28:18 0 [Note] /usr/sbin/mar>
 lines 1-16
 ```
+* If MariaDB isn’t running, you can start it with the command `sudo systemctl start mariadb`.
+
+* In this guide you installed the MariaDB relational database management system, and secured it using the mysql_secure_installation script that it came installed with.
+
 Please enable firewall -  
 The Database Firewall filter is used to block queries that match a set of rules. It can be used to prevent harmful queries from reaching the backend database instances or to limit access to the database based on a more flexible set of rules compared to the traditional GRANT-based privilege system. Currently the filter does not support multi-statements.
 
