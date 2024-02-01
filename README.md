@@ -631,6 +631,3 @@ and
 exit
 ```
 
-
-#### How To Import and Export Databases in MySQL or MariaDB-
-
