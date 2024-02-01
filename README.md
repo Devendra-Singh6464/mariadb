@@ -231,7 +231,6 @@ Thanks for using MariaDB!
 ```
 
 * Start and enable MariaDB service.
-
 ```
 sudo syatemctl start mariadb
 ```
@@ -449,7 +448,7 @@ MariaDB [birthdays]> INSERT INTO tourneys (name, wins, best, size)
 Query OK, 5 rows affected (0.002 sec)
 Records: 5  Duplicates: 0  Warnings: 0
 ```
-* and create another table in the same database-
+* Create another table in the same database-
 * Command-
 ```
 CREATE TABLE dinners ( 
@@ -551,7 +550,25 @@ MariaDB [birthdays]> SELECT * FROM tourneys;
 5 rows in set (0.000 sec)
 ```
 
-* There may be times when you’re working with databases that have columns or tables with relatively long or difficult-to-read names. In these cases, you can make these names more readable by creating an alias with the AS keyword. Aliases created with AS are temporary, and only exist for the duration of the query for which they’re created:
+* WHERE is used in queries to filter records that meet a specified condition, and any rows that do not meet that condition are eliminated from the result. A WHERE clause typically follows this syntax:
+* Syntax - .... WHERE name best size;
+* For example, if you wanted to find Irma’s shoe size, you could use the following query:
+* Command- 
+```
+SELECT size FROM tourneys WHERE name = 'Irma';
+```
+* Output-
+```
+MariaDB [birthdays]> SELECT size FROM tourneys WHERE name = 'Irma';
++------+
+| size |
++------+
+|    7 |
++------+
+1 row in set (0.001 sec)
+```
+
+* There may be times when you’re working with databases that have columns or tables with relatively long or difficult-to-read names. In these cases, you can make these names more readable by creating an alias with the `AS` keyword. Aliases created with AS are temporary, and only exist for the duration of the query for which they’re created:
 * Command -
 ```
 SELECT name AS n, birthdate AS b, dessert AS d FROM dinners;
@@ -571,39 +588,48 @@ MariaDB [birthdays]> SELECT name AS n, birthdate AS b, dessert AS d FROM dinners
 +---------+------------+-----------+
 5 rows in set (0.000 sec)
 ```
+We have told SQL to display the `name` column as `n`, the `birthdate` column as `b`, and the `dessert` column as `d`.
 
-* How to show data in the table  
+* The `AVG` function returns the average (mean) value of a column. Using our example table, you could find the average best score amongst your friends with this query:
+* Command-
+```
+SELECT AVG(best) FROM tourneys;
+```
+* Output-
+```
+MariaDB [birthdays]> SELECT AVG(best) FROM tourneys;
++-----------+
+| AVG(best) |
++-----------+
+|     252.8 |
++-----------+
+1 row in set (0.007 sec)
+``` 
+#### Querying Multiple Tables-
+* The `JOIN` clause can be used to combine rows from two or more tables in a query result. It does this by finding a related column between the tables and sorts the results appropriately in the output.
 
+`SELECT` statements that include a `JOIN` clause generally follow this syntax:
+* SELECT table1.column1, table2.column2
+* FROM table1
+* JOIN table2 ON table1.related_column=table2.related_column;
+
+* Command -
+```
+SELECT tourneys.name, tourneys.size, dinners.birthdate 
+FROM tourneys 
+JOIN dinners ON tourneys.name=dinners.name;
 ```
 
-```
-output
-```
- 
-```
+
 
 * How to exit mariadb sell
 ```
 quit
 ```
 and 
-
 ```
 exit
 ```
-
-* How to create User:
-```
-create user Student@localhost identified by 'book';
-```
-Output -
-
-```
-
-```
-
-
-
 
 
 #### How To Import and Export Databases in MySQL or MariaDB-
