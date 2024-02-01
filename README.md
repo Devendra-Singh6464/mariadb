@@ -609,9 +609,9 @@ MariaDB [birthdays]> SELECT AVG(best) FROM tourneys;
 * The `JOIN` clause can be used to combine rows from two or more tables in a query result. It does this by finding a related column between the tables and sorts the results appropriately in the output.
 
 `SELECT` statements that include a `JOIN` clause generally follow this syntax:
-* SELECT table1.column1, table2.column2
-* FROM table1
-* JOIN table2 ON table1.related_column=table2.related_column;
+> SELECT table1.column1, table2.column2  
+FROM table1  
+> JOIN table2 ON table1.related_column=table2.related_column;  
 
 * Command -
 ```
